@@ -6,16 +6,16 @@ import Instrumento from './Instrumento';
 import { ItemInstrumento } from './ItemInstrumento';
 
 export const Productos = () => {
-  
+ 
    const [instrumentos, setInstrumentos] = useState<Instrumento[]>([]);
     
-    const getInstrumentosResto = () => {
-      let datos:Instrumento[] = getInstrumentosJSON();
-      setInstrumentos(datos);
-    }
+   const getInstrumentos = async () => {
+    let datos:Instrumento[] = await getInstrumentosJSON();
+    setInstrumentos(datos);
+  }
 
     useEffect(() => {
-      getInstrumentosResto();
+      getInstrumentos();
     }, []);
 
     
@@ -25,7 +25,9 @@ export const Productos = () => {
           <Container fluid="md">
               <Row>  
                {instrumentos.map((instrumento:Instrumento) => 
-                <ItemInstrumento key={instrumento.id} id={instrumento.id} instrumento={instrumento.instrumento} marca={instrumento.marca} modelo={instrumento.modelo} imagen={instrumento.imagen} precio={instrumento.precio} costoEnvio={instrumento.costoEnvio} cantidadVendida={instrumento.cantidadVendida} descripcion={instrumento.descripcion} ></ItemInstrumento>
+                <ItemInstrumento key={instrumento.id} id={instrumento.id} instrumento={instrumento.instrumento} 
+                marca={instrumento.marca} modelo={instrumento.modelo} imagen={instrumento.imagen} precio={instrumento.precio} 
+                costoEnvio={instrumento.costoEnvio} cantidadVendida={instrumento.cantidadVendida} descripcion={instrumento.descripcion} ></ItemInstrumento>
                )}
               </Row>
           </Container>

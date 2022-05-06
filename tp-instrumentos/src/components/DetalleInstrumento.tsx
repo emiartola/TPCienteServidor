@@ -8,7 +8,6 @@
 
 
 import React, { useEffect, useState } from "react";
-import { Col, Container, ListGroup, Nav, Row } from 'react-bootstrap';
 import { useParams } from "react-router-dom";
 import { getInstrumentoXId } from "./FuncionesApi";
 import Instrumento from "./Instrumento";
@@ -21,16 +20,17 @@ export const DetalleInstrumento = () => {
 
     let instrumentoId: number = 0;
 
-    const getInstrumentoResto = () => {
-        let instrumentoSelect: Instrumento = getInstrumentoXId(instrumentoId);
+     const getInstrumento =  async () => {
+        let instrumentoSelect:Instrumento = await getInstrumentoXId(Number(instrumentoId));
         setInstrumento(instrumentoSelect);
-    }
+      }
+  
 
     useEffect(() => {
         if (idInstrumento) {
             instrumentoId = parseInt(idInstrumento);
         }
-        getInstrumentoResto();
+        getInstrumento();
     }, []);
 
     // 

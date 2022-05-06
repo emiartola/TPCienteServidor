@@ -13,3 +13,4 @@ ruta.get('/instrumentos/:id', getInstrumentoXId);
 // ruta.delete('/eliminar/:id', eliminarInstrumento);
 
 export default ruta;
+
