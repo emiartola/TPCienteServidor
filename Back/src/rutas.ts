@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getInstrumentos, getInstrumentoXId } from "./querys";
+import { getInstrumentos, getInstrumentoXId } from "./controladores/instrumentoController";
 
 const ruta = Router();
 

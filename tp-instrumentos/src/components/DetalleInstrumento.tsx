@@ -15,37 +15,51 @@ import { Navigation } from './Navigation';
 
 
 export const DetalleInstrumento = () => {
-    const { idInstrumento } = useParams();
-    const [instrumento, setInstrumento] = useState<Instrumento>();
+    // const { idInstrumento } = useParams();
+    // const [instrumento, setInstrumento] = useState<Instrumento>();
 
-    let instrumentoId: number = 0;
+    // let instrumentoId: number = 0;
 
-     const getInstrumento =  async () => {
-        let instrumentoSelect:Instrumento = await getInstrumentoXId(Number(instrumentoId));
-        setInstrumento(instrumentoSelect);
-      }
+    //  const getInstrumento =  async () => {
+    //     let instrumentoSelect:Instrumento[] = await getInstrumentoXId(instrumentoId);
+    //     setInstrumento(instrumentoSelect[instrumentoId]);
+    //   }
   
+    // useEffect(() => {
+    //     if (idInstrumento) {
+    //         instrumentoId = parseInt(idInstrumento);
+    //     }
+    //     getInstrumento();
+    // }, []); 
+
+    const {idInstrumento} = useParams();
+    const [instrumento, setInstrumento] = useState<Instrumento>();
+    
+    let instrumentoId:number = 0;
+    
+    const getInstrumento =  async () => {
+      let instrumentoSelect:Instrumento = await getInstrumentoXId(Number(instrumentoId));
+      setInstrumento(instrumentoSelect);
+    }
 
     useEffect(() => {
-        if (idInstrumento) {
+        if(idInstrumento){
             instrumentoId = parseInt(idInstrumento);
         }
         getInstrumento();
     }, []);
 
-    // 
-
     return (
         <>
-        <Navigation></Navigation>
+        <Navigation/>
             <div className="container">
                 <div className="row">
                     <div className="col-lg-8">
                         <img
                             style={{ maxWidth: "400px", maxHeight: "400px" }}
-                            src={"http://localhost:3000/images/" + instrumento?.imagen}
+                            src={instrumento?.imagen}  
                             alt="instrumento"
-                            className="card-img"
+                            className="minAltoImg"
                         />
                         <p>Descripción :</p>
                         <p>{instrumento?.descripcion}</p>
@@ -68,7 +82,7 @@ export const DetalleInstrumento = () => {
                             </h5>
                         )}
                         <button className="btn btn-outline-primary mt-5">
-                            Agregar Al Carrito
+                            Volver
                         </button>
                     </div>
                 </div>

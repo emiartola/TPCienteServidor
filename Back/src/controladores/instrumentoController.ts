@@ -1,39 +1,45 @@
 import { Request, Response } from "express";
-import { bd } from "../bdmysql";
+import { bd } from "../dbmysql";
 
-
-export const getInstrumentos = (request: Request, response: Response) => new Promise((resolve, reject) => {
+export const getInstrumentos = (request: Request, response: Response) =>
+  new Promise((resolve, reject) => {
     bd.getConnection((err, connection) => {
+      if (err) {
+        console.error(err);
+        response.send(err);
+        return;
+      }
+      console.log("bd MySql: ", connection.threadId);
+      connection.query("SELECT * FROM instrumento", (err, resultado) => {
         if (err) {
-            console.error(err);
-            response.send(err);
-            return;
+          console.error(err);
         }
-        console.log('bd MySql: ', connection.threadId);
-        connection.query('SELECT * FROM Empleado', (err, resultado) => {
-            if (err) {
-                console.error(err);
-            }
-            response.send(resultado);
-        });
+        console.log(resultado);
+        response.send(resultado);
+      });
     });
-});
+  });
 
-export const getInstrumentoXId = (request: Request, response: Response) => new Promise((resolve, reject) => {
-    const idEmpleado = parseInt(request.params.id);
+export const getInstrumentoXId = (request: Request, response: Response) =>
+  new Promise((resolve, reject) => {
+    const id = parseInt(request.params.id);
     bd.getConnection((err, connection) => {
-        if (err) {
+      if (err) {
+        console.error(err);
+        response.send(err);
+        return;
+      }
+      console.log("bd MySql: ", connection.threadId);
+      connection.query(
+        "SELECT * FROM instrumento WHERE id=?",
+        [id],
+        (err, resultado) => {
+          if (err) {
             console.error(err);
-            response.send(err);
-            return;
+          }
+          console.log(resultado);
+          response.send(resultado);
         }
-        console.log('bd MySql: ', connection.threadId);
-        connection.query('SELECT * FROM empleado WHERE id =?', [idEmpleado], (err, resultado) => {
-            if (err) {
-                console.error(err);
-            }
-            response.send(resultado);
-        });
+      );
     });
-
-});
+  });

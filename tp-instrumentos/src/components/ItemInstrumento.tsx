@@ -45,7 +45,7 @@ export const ItemInstrumento = (args: InstrumentoParams) => {
                     </div>
                 </div>
                 <div>
-                    <Button className="btn btn-success btn-lg btn-block" href={`detalle/${args.id}`} variant="primary"> Detalle </Button>
+                    <Button className="btn btn-success btn-lg btn-block" href={`instrumentos/${args.id}`} variant="primary"> Detalle </Button>
                 </div>
             </div>
         </div>

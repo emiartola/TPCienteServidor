@@ -21,7 +21,7 @@ export const Productos = () => {
     
     return (
         <>
-        <Navigation></Navigation>
+        <Navigation/>
           <Container fluid="md">
               <Row>  
                {instrumentos.map((instrumento:Instrumento) => 

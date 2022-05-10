@@ -13,9 +13,9 @@ class App extends Component{
     return (
           <Routes>
             <Route path="/Home" element={<Home/>}/>
-            <Route path="/Productos" element={<Productos/>}/>
-            <Route path="/detalle">
-              <Route path=":idInstrumento" element={<DetalleInstrumento />} />
+            <Route path="/instrumentos" element={<Productos/>}/>
+            <Route path="/instrumentos/">
+              <Route path=":idInstrumento" element={<DetalleInstrumento/>} />
             </Route>
             <Route path="*" element={<Productos/>}/>
             <Route path="/DondeEstamos" element={<DondeEstamos/>}/>

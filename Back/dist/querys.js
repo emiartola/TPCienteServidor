@@ -13,7 +13,7 @@ exports.getInstrumentoXId = exports.getInstrumentos = void 0;
 function getInstrumentos() {
     return __awaiter(this, void 0, void 0, function* () {
         const fetch = require('node-fetch');
-        const response = yield fetch('http://localhost:3000/instrumentos');
+        const response = yield fetch('http://localhost:8080/instrumentos');
         const data = yield response.json();
         let list = [];
         try {
@@ -36,7 +36,7 @@ exports.getInstrumentos = getInstrumentos;
 function getInstrumentoXId(instrumento) {
     return __awaiter(this, void 0, void 0, function* () {
         const fetch = require('node-fetch');
-        const response = yield fetch(`http://localhost:3000/instrumentos/${instrumento.id}`);
+        const response = yield fetch(`http://localhost:8080/instrumentos/${instrumento.id}`);
         const data = yield response.json();
         let list = [];
         try {

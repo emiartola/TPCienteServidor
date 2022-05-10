@@ -3,7 +3,7 @@ import Instrumento from "./entidades/instrumento";
 export async function getInstrumentos(){
     const fetch = require('node-fetch');
 
-    const response = await fetch('http://localhost:3000/instrumentos');
+    const response = await fetch('http://localhost:8080/instrumentos');
     const data = await response.json();
     
     let list:Instrumento[] = [];
@@ -28,7 +28,7 @@ export async function getInstrumentos(){
 export async function getInstrumentoXId(instrumento:Instrumento){
     const fetch = require('node-fetch');
 
-    const response = await fetch(`http://localhost:3000/instrumentos/${instrumento.id}`);
+    const response = await fetch(`http://localhost:8080/instrumentos/${instrumento.id}`);
     const data = await response.json();
     
     let list:Instrumento[] = [];
