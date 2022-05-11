@@ -3,7 +3,7 @@ import express from "express";
 import rutas from './rutas';
 
 const app = express();
-//Esto crea la base de datos
+
 require('./dbmysql');
 
 app.use(express.json());

@@ -1,13 +1,13 @@
 import { Router } from "express";
-import { getInstrumentos, getInstrumentoXId } from "./controladores/instrumentoController";
+import { getAllInstrumentos, getInstrumentoById } from "./controladores/instrumentoController";
 
 const ruta = Router();
 
 //ruta.get('/test', (requ, resp) => resp.send('HOLA MUNDO'));
 
 
-ruta.get('/instrumentos', getInstrumentos);
-ruta.get('/instrumentos/:id', getInstrumentoXId);
+ruta.get('/instrumentos', getAllInstrumentos);
+ruta.get('/instrumentos/:id', getInstrumentoById);
 // ruta.post('/insertar', crearInstrumento);
 // ruta.put('/actualizar/:id', updateInstrumento);
 // ruta.delete('/eliminar/:id', eliminarInstrumento);

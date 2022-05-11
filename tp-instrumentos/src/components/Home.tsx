@@ -1,5 +1,6 @@
 import React from "react";
 import { Navigation } from "./Navigation";
+import { Productos } from "./Productos";
 
 export const Home = () => {
   return (
@@ -18,6 +19,7 @@ export const Home = () => {
           </h5>
         </div>
       </div>
+      
     </>
   );
 };

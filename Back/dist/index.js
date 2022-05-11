@@ -6,7 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const rutas_1 = __importDefault(require("./rutas"));
 const app = (0, express_1.default)();
-//Esto crea la base de datos
 require('./dbmysql');
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));

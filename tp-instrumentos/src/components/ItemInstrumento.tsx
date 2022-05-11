@@ -20,7 +20,7 @@ export const ItemInstrumento = (args: InstrumentoParams) => {
             <div className="card mb-3" style={{ maxWidth: "1000px" }}>
                 <div className="row no-gutters">
                     <div className="col-md-3">
-                        <img src={`images/${args.imagen}`} className="card-img" alt="item" />
+                        <img src={`../images/${args.imagen}`} className="card-img" alt="item" />
                     </div>
                     <div className="col-md-8">
                         <div className="card-body">
@@ -45,7 +45,7 @@ export const ItemInstrumento = (args: InstrumentoParams) => {
                     </div>
                 </div>
                 <div>
-                    <Button className="btn btn-success btn-lg btn-block" href={`instrumentos/${args.id}`} variant="primary"> Detalle </Button>
+                    <Button className="btn btn-success btn-lg btn-block" href={`/instrumentos/${args.id}`} variant="primary"> Detalle </Button>
                 </div>
             </div>
         </div>

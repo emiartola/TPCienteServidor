@@ -1,13 +1,5 @@
-// import { useEffect, useState } from 'react';
-// import { Col, Container, ListGroup, Nav, Row } from 'react-bootstrap';
-// import { useParams } from 'react-router-dom';
-// import { getInstrumentoXId } from './FuncionesApi';
-// import Instrumento from './Instrumento';
-// import { Navigation } from './Navigation';
-
-
-
 import React, { useEffect, useState } from "react";
+import { Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { getInstrumentoXId } from "./FuncionesApi";
 import Instrumento from "./Instrumento";
@@ -15,49 +7,32 @@ import { Navigation } from './Navigation';
 
 
 export const DetalleInstrumento = () => {
-    // const { idInstrumento } = useParams();
-    // const [instrumento, setInstrumento] = useState<Instrumento>();
 
-    // let instrumentoId: number = 0;
-
-    //  const getInstrumento =  async () => {
-    //     let instrumentoSelect:Instrumento[] = await getInstrumentoXId(instrumentoId);
-    //     setInstrumento(instrumentoSelect[instrumentoId]);
-    //   }
-  
-    // useEffect(() => {
-    //     if (idInstrumento) {
-    //         instrumentoId = parseInt(idInstrumento);
-    //     }
-    //     getInstrumento();
-    // }, []); 
-
-    const {idInstrumento} = useParams();
+    const { id } = useParams();
     const [instrumento, setInstrumento] = useState<Instrumento>();
-    
-    let instrumentoId:number = 0;
-    
-    const getInstrumento =  async () => {
-      let instrumentoSelect:Instrumento = await getInstrumentoXId(Number(instrumentoId));
-      setInstrumento(instrumentoSelect);
+
+     const getInstrumento = async () => {
+        let datos: Instrumento = await getInstrumentoXId(Number(id));
+        console.log(datos);
+        if (datos !== null) {
+            setInstrumento(datos);
+        }
+        
     }
 
     useEffect(() => {
-        if(idInstrumento){
-            instrumentoId = parseInt(idInstrumento);
-        }
         getInstrumento();
     }, []);
 
     return (
         <>
-        <Navigation/>
+            <Navigation/>
             <div className="container">
                 <div className="row">
                     <div className="col-lg-8">
                         <img
                             style={{ maxWidth: "400px", maxHeight: "400px" }}
-                            src={instrumento?.imagen}  
+                            src={`../images/${instrumento?.imagen}`}
                             alt="instrumento"
                             className="minAltoImg"
                         />
@@ -78,12 +53,12 @@ export const DetalleInstrumento = () => {
                             </h5>
                         ) : (
                             <h5 style={{ color: "orange" }}>
-                                 ${instrumento?.costoEnvio}
+                                ${instrumento?.costoEnvio}
                             </h5>
                         )}
-                        <button className="btn btn-outline-primary mt-5">
+                        <Button href="/instrumentos" className="btn btn-primary mt-5">
                             Volver
-                        </button>
+                        </Button>
                     </div>
                 </div>
             </div>
